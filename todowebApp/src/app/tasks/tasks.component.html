@@ -1,47 +1,87 @@
 <div class="container">
+    <style>
+        .contain {
+          height: 250px;
+          border-radius: 25px;
+        }
+    </style>
 
-    <div class="card">
+    <div class="card" class="contain" style="background-color:rgb(202, 248, 231)">
         <div class="card-body">
-            <div class="form-group">
-             <label for="title">Title</label>
-             <input type="text" class="form-control" id="title" [(ngModel)]= "newTask.title">
-             <div id="emailHelp" class="form-text">put title of your task</div>
+            <div>
+                <div class="form-group" style="color:rgb(0, 0, 0)">
+                  <label for="title" style="font: size 3px"><b>Title</b></label>
+                  <input type="text" class="form-control" id="title" [(ngModel)] = newTask.title>
+                  <div id="emailHelp" class="form-text" style="color: rgb(0, 0, 0);"><i>Put title of your task</i></div>
+                </div>
             </div>
 
-            <div class="form-group">
-             <label for="description">Description</label>
-             <input type="text" class="form-control" id="title" [(ngModel)]= "newTask.description">
-             <div id="emailHelp" class="form-text">put description of your task</div>
+            <div>
+                <div class="form-group" style="color: rgb(0, 0, 0);">
+                  <label for="description" style="font-size:20px"><b>Description</b></label>
+                  <input type="text" class="form-control" id="description" [(ngModel)] = newTask.description>
+                  <div id="emailHelp" class="form-text" style="color: rgb(5, 5, 5);"><i>Put description of your task</i></div>
+                </div>
             </div>
 
-           <button (click)="id==''?createTask():updateTask()" class="btn btn-primary" >{{id==''?'create':'update'}}</button>
+            <style>
+                .center {
+                    margin: 0;
+                    position: absolute;
+                    left: 50%;
+                    -ms-transform: translate(-50%);
+                    transform: translate(-50%);
+                }
+            </style>
+
+            <div class="center">
+                <button (click)="id==''?createTask():updateTask()" class="btn btn-primary" > {{id==''?'Create':'Update'}} </button>
+            </div>
+
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
+  <br>
+  <br>
+  <br>
+
+    <style>
+        .roundBorderUp {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
+
+        .roundBorderDown {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          
+        }
+
+        .grad1 {
+          background-color:powderblue; /* For browsers that do not support gradients */
+          background-image: linear-gradient(skyblue*ngFor white);
+        }
+
+    </style>
 
     <div class="row">
 
-
-   <div *ngFor="let t of tasks" class="col-md-3 col-sm-3 col-lg-3">
-        <div class="card">
-            <div class="card-body">
-             <h5 class="card-title">{{t.title}}</h5>
-             {{t.description}}
-            
-            </div>
-            <div class="card-body">
-             <a (click)="setUpdate(t)"class="card-link">Upadte</a>
-             <a (click)="deleteTask(t._id)"class="card-link">Delete</a>
-            </div>
-        </div> 
-        
-        
-<br>
-
-
+        <div *ngFor = "let t of tasks" class="col-md-3  col-sm-3 col-lg-3">
+            <div class="card" class="grad1">
+                <body class="roundBorderUp" style="background-color:rgb(220, 252, 255);">
+                    <div class="card-body" style="color:rgb(7, 7, 7)">
+                    <h5 class="card-title">{{t.title}}</h5>
+                    {{t.description}}
+                </div>
+            </body>            
+                        
+            <body class="roundBorderDown" style="background-color:rgb(212, 255, 253);">
+                <div class="card-body">
+                    <a (click)="setUpdate(t)" class="btn btn-primary"  > Update </a>
+                   <a (click)="deleteTask(t._id)" class="btn btn-primary" > Delete </a>
+                </div>
+            </body>
+        </div>
+        <br>
     </div>
-</div>
 </div>

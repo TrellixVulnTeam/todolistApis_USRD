@@ -38,9 +38,11 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(id:any){
-    this.taskService.deleteTasks(id).subscribe(res=>{
+    if(confirm("Are you sure to delete the task")){
+     this.taskService.deleteTasks(id).subscribe(res=>{
       this.getTasks();
     })
+   }
   }
 
   setUpdate(t:any){
